@@ -1,0 +1,14 @@
+name: Action Sample
+
+on:
+  push:
+    branches: 
+      - master
+  workflow_dispatch:
+
+jobs:
+  numpy-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Python version
+        run: ls
