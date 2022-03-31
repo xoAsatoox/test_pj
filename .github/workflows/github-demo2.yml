@@ -52,7 +52,6 @@ jobs:
           #cd ./test
           #pytest test_app.py
           pwd
-          ls 
-          ls /
+          ls ../
 
       
