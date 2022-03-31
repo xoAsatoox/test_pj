@@ -1,4 +1,4 @@
 import sys
 
-print('ok')
+print('ok', sys.path)
 print('NG')
