@@ -1,4 +1,4 @@
 import sys
 
 print('ok')
- print('NG')
+print('NG')
