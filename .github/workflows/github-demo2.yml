@@ -63,5 +63,6 @@ jobs:
         run: |
           make all
           cat test.txt
+          cat test_py.py
 
       
