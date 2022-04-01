@@ -1,4 +1,4 @@
-name: Lint
+name: Test
 
 on:
   pull_request:
@@ -77,7 +77,8 @@ jobs:
           name: hello-exe-file
       - name: execute download file
         run: |
-          ls
+          ls -l ./hello
+          chmod 777 ./hello
           ./hello
 
       
