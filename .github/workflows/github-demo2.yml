@@ -62,6 +62,7 @@ jobs:
       - name: Build
         run: |
           make hello
+      - name: Upload output file
         uses: actions/upload-artifact@v3
         with:
           name: hello-exe-file
