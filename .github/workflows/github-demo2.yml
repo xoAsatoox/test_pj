@@ -10,12 +10,7 @@ env:
   DAY_OF_WEEK: Monday
 
 jobs:
-  numpy-test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get Python version
-        run: echo ls
-  flake8_py3:
+  Lint:
     runs-on: ubuntu-latest
     steps:
       - name: Setup Python
@@ -33,10 +28,11 @@ jobs:
       - name: Run flake8
         uses: suo/flake8-github-action@releases/v1
         with:
-          checkName: 'flake8_py3'   # NOTE: this needs to be the same as the job name
+          checkName: 'Lint'   # NOTE: this needs to be the same as the job name
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  pytest:
+  UnitTest:
+    needs: Lint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -52,7 +48,7 @@ jobs:
           ls
       - name: Run pytest
         run: pytest
-  build:
+  Build:
     runs-on: ubuntu-latest
     steps:
       #- name: Set EnvValue
@@ -60,6 +56,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build
-        run: make all
+        run: |
+          make all
+          cat test.txt
 
       
