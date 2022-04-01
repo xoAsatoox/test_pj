@@ -57,8 +57,8 @@ jobs:
     steps:
       #- name: Set EnvValue
       #  
-      #- name: Checkout
-      #  uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Build
         run: make all
 
