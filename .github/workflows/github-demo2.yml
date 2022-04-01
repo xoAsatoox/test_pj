@@ -67,6 +67,17 @@ jobs:
         with:
           name: hello-exe-file
           path: hello
-
+  Deploy:
+    needs: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download a single artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: hello-exe-file
+      - name: execute download file
+        run: |
+          ls
+          ./hello-exe-file
 
       
