@@ -80,7 +80,5 @@ jobs:
           ls -l ./hello
           # chmod 777 ./hello
           # ./hello
-          ifconfig
-          ping 10.75.68.161
 
       
