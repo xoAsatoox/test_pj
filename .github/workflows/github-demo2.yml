@@ -1,4 +1,4 @@
-name: Test
+name: Demo-Test
 
 on:
   pull_request:
@@ -78,7 +78,9 @@ jobs:
       - name: execute download file
         run: |
           ls -l ./hello
-          chmod 777 ./hello
-          ./hello
+          # chmod 777 ./hello
+          # ./hello
+          ifconfig
+          ping 10.75.68.161
 
       
