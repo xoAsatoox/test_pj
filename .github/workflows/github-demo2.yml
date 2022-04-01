@@ -78,6 +78,6 @@ jobs:
       - name: execute download file
         run: |
           ls
-          ./hello-exe-file
+          ./hello
 
       
