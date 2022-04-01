@@ -52,5 +52,14 @@ jobs:
           ls
       - name: Run pytest
         run: pytest
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      #- name: Set EnvValue
+      #  
+      #- name: Checkout
+      #  uses: actions/checkout@v2
+      - name: Build
+        run: make all
 
       
