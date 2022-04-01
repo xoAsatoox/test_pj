@@ -47,9 +47,9 @@ jobs:
           architecture: x64
       - name: Install pytest
         run: |
-          pip install pytest
+          pip install pytest pytest-cov
           ls
-      - name: Run pytest
+      - name: Run pytest --cov
         run: pytest
   Build:
     needs: UnitTest
