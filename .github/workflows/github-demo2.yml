@@ -61,8 +61,22 @@ jobs:
         uses: actions/checkout@v2
       - name: Build
         run: |
-          make all
-          cat test.txt
-          cat test_py.py
+          make hello
+        uses: actions/upload-artifact@v3
+        with:
+          name: hello-exe-file
+          path: hello
+  Deploy:
+    needs: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download a single artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: hello-exe-file
+      - name: execute download file
+        run: |
+          ls
+          ./hello-exe-file
 
       
