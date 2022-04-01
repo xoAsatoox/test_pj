@@ -49,8 +49,8 @@ jobs:
         run: |
           pip install pytest pytest-cov
           ls
-      - name: Run pytest --cov
-        run: pytest
+      - name: Run pytest with coverage
+        run: pytest --cov
   Build:
     needs: UnitTest
     runs-on: ubuntu-latest
