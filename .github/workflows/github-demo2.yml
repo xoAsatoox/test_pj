@@ -1,6 +1,9 @@
 name: Lint
 
 on:
+  pull_request:
+    branches:
+      - master
   push:
     branches: 
       - master
@@ -49,6 +52,7 @@ jobs:
       - name: Run pytest
         run: pytest
   Build:
+    needs: UnitTest
     runs-on: ubuntu-latest
     steps:
       #- name: Set EnvValue
