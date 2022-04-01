@@ -80,7 +80,7 @@ jobs:
       - name: execute download file
         run: |
           ls -l ./hello
-          echo ${github.event.head_commit.message}
+          echo ${{ github.event.head_commit.message }}
           # chmod 777 ./hello
           # ./hello
 
