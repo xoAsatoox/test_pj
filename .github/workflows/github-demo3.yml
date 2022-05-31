@@ -1,12 +1,12 @@
-name: Demo-Test
+name: Deploy-Demo
 
 on:
   pull_request:
     branches:
-      - master2
+      - master
   push:
-    branches: 
-      - master2
+    branches:
+      - master
   workflow_dispatch:
 
 env:
@@ -49,40 +49,38 @@ jobs:
         run: |
           pip install pytest pytest-cov
           ls
-      - name: Run pytest with coverage
-        run: |
-          pytest --cov
-          coverage report
-  Build:
+      #- name: Run pytest with coverage
+      #  run: |
+      #    pytest --cov
+      #    coverage report
+  Deploy:
     needs: UnitTest
     runs-on: ubuntu-latest
     steps:
-      #- name: Set EnvValue
-      #  
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Build
-        run: |
-          make hello
-      - name: Upload output file
-        uses: actions/upload-artifact@v3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          name: hello-exe-file
-          path: hello
-  Deploy:
-    needs: Build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download a single artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: hello-exe-file
-      - name: execute download file
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-1
+
+      - name: archive files
         run: |
-          ls -l ./hello
-          echo ${{ github.event.head_commit.message }}
-          # chmod 777 ./hello
-          # ./hello
+          mkdir ./archives
+          ls
+          cd ./CPSSVOperationTimeService
+          zip -rq ../archives/CPSSVOperationTimeService.zip ./*
+
+      - name: upload files for S3
+        run: |
+          aws s3 cp ../archives/CPSSVOperationTimeService.zip  s3://dev-nakano-testdata/
+
+      - name: set files for lambda
+        run: |
+          aws lambda update-function-code --function-name CPSSVOperationTimeService_nakano --s3-bucket dev-nakano-testdata  --s3-key CPSSVOperationTimeService.zip --publish
 
 
       
