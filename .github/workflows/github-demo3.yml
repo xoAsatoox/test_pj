@@ -13,26 +13,7 @@ env:
   DAY_OF_WEEK: Monday
 
 jobs:
-  UnitTest:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Setup Python
-        uses: actions/setup-python@v1
-        with:
-          python-version: 3.8.12
-          architecture: x64
-      - name: Install pytest
-        run: |
-          pip install pytest pytest-cov
-          ls
-      #- name: Run pytest with coverage
-      #  run: |
-      #    pytest --cov
-      #    coverage report
   Deploy:
-    needs: UnitTest
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -54,7 +35,8 @@ jobs:
 
       - name: upload files for S3
         run: |
-          aws s3 cp ../archives/CPSSVOperationTimeService.zip  s3://dev-nakano-testdata/
+          ls
+          aws s3 cp ./archives/CPSSVOperationTimeService.zip  s3://dev-nakano-testdata/
 
       - name: set files for lambda
         run: |
