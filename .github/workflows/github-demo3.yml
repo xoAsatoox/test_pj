@@ -47,7 +47,7 @@ jobs:
         env:
           BRANCH: "${GITHUB_REF#refs/heads/}"
         run: |
-          git status
+          git status 
           echo ${{ env.BRANCH }}
       
       - name: Get changed files
