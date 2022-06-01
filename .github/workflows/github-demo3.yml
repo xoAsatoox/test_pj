@@ -43,6 +43,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+      
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v10.1
+      
+      - name: check diff file name
+        run: |
+          echo ${steps.changed-files.outputs.all_modified_files}
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
