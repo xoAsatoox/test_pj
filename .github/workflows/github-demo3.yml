@@ -40,10 +40,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        env:
-          BRANCH: "${GITHUB_REF#refs/heads/}"
         with:
           fetch-depth: 2
+
+      - name: Checkout the target branch
+        env:
+          BRANCH: "${GITHUB_REF#refs/heads/}"
         run: |
           git status
           echo ${{ env.BRANCH }}
