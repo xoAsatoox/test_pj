@@ -5,9 +5,6 @@ on:
     branches:
       - master
   push:
-    branches:
-      - master
-  workflow_dispatch:
 
 env:
   DAY_OF_WEEK: Monday
@@ -43,8 +40,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        env:
+          BRANCH: "${GITHUB_REF#refs/heads/}"
         with:
           fetch-depth: 2
+        run: |
+          git status
+          echo ${{ env.BRANCH }}
       
       - name: Get changed files
         id: changed-files
