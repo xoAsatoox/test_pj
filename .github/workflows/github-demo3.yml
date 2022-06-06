@@ -61,6 +61,8 @@ jobs:
       
       - name: Run test
         run: |
+          ls
+          cd InternalTest
           pytest test_internal.py -v --cov=../CPSSVOperationTimeService --cov-report=term-missing
 
   Deploy:
