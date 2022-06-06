@@ -59,7 +59,7 @@ jobs:
           pip install pytest pytest-cov
           pip install pymongo
       
-      - name Run test
+      - name: Run test
         run: |
           pytest test_internal.py -v --cov=../CPSSVOperationTimeService --cov-report=term-missing
 
