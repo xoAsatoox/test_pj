@@ -93,7 +93,7 @@ jobs:
         run: |
           aws lambda update-function-code --function-name CPSSVOperationTimeService_nakano --s3-bucket dev-nakano-testdata  --s3-key CPSSVOperationTimeService.zip --publish
       
-      -name: Run external test
+      - name: Run external test
         continue-on-error: true
         run: |
           cd ExternalTest
