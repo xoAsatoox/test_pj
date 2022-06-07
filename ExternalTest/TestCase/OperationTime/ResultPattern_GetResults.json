@@ -1,0 +1,64 @@
+{
+	"変換無し": {
+		"Filter": {
+			"periodStartTime": "startTime",
+			"periodEndTime": "endTime",
+			"lineName": "lineName",
+			"productName": "productName",
+			"WorkTypeName": "workTypeName"
+		},
+		"Pattern": {
+			"result": {
+				"values": [
+					{
+						"startTime": "date",
+						"endTime": "date",
+						"order": "str",
+						"productName": "str",
+						"workTypeName": "str",
+						"unit": "int",
+						"numOfSet": "int",
+						"workTime": "int",
+						"stopTime": "int",
+						"stopList": [
+							{
+								"stopStart": "str",
+								"stopEnd": "str",
+								"stopTime": "int"
+							}
+						]
+					}
+				]
+			}
+		}
+	},
+	"合計": {
+		"Filter": {
+			"periodStartTime": "startTime",
+			"periodEndTime": "endTime",
+			"lineName": "process",
+			"productName": "product"
+		},
+		"Pattern": {
+			"Result": {
+				"Values": [
+					{
+						"startTime": "date",
+						"endTime": "date",
+						"workTime": "int",
+						"stopTime": "int",
+						"timeList": [
+							{
+								"workType": "str",
+								"workTime": "int",
+								"stopTime": "int",
+								"unit": "int",
+								"numOfSet": "int"
+							}
+						]
+					}
+				]
+			}
+		}
+	}
+}

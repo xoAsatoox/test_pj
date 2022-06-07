@@ -1,0 +1,41 @@
+{
+    "Normal": {
+        "Meta": {
+            "version": "str"
+        },
+        "ParamInfo": {
+            "periodStartTime": "int",
+            "periodEndTime": "int",
+            "processName": ["str"],
+            "lineName": ["str"],
+            "manufacturerName": ["str"],
+            "productName": ["str"],
+            "areaName": ["str"],
+            "workTypeName": ["str"],
+            "aggregationUnit": "str"
+        },
+        "Values": []
+    },
+    "Aggregation": {
+        "Meta": {
+            "version": "str"
+        },
+        "ParamInfo": {
+            "periodStartTime": "int",
+            "periodEndTime": "int",
+            "processName": ["str"],
+            "lineName": ["str"],
+            "manufacturerName": ["str"],
+            "productName": ["str"],
+            "areaName": ["str"],
+            "workTypeName": ["str"],
+            "aggregationUnit": "str"
+        },
+        "Values": [
+            {
+                "*AggregationKey": "*AggregationValue",
+                "result": {}
+            }
+        ]
+    }
+}
