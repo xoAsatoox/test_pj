@@ -108,7 +108,7 @@ jobs:
 
       - name: Install python lib
         run: |
-          pip install pytest
+          pip install pytest requests
 
       - name: Run external test
         continue-on-error: true
